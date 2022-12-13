@@ -1,0 +1,66 @@
+<program> -><vars> program <block>
+<block>->begin <vars> <stats> end
+<vars>->empty | whole Identifier := Integer ; <vars>
+<expr>-><N> - <expr> | <N>
+<N>-><A> + <N> | <A> * <N> | <A>
+<A>-><M><A_>
+<A_>->/<M> | empty
+<M>->: <M> | <R>
+<R>->( <expr> ) | Identifier | Integer
+<stats>-><stat> <mStat>
+<mStat>->empty | <stat> <mStat>
+<stat>-><in> ; | <out> ; | <block> | <if> ; | <loop> ; | <assign> ; | <goto> ; | <label> ;
+<in>->input Identifier
+<out>->output <expr>
+<if>->if [ <expr> <RO> <expr> ] then <stat> | if [ <expr> <RO> <expr> ] then <stat> pick <stat>
+<loop>->while [ <expr> <RO> <expr> ] <stat>
+<assign>->assign Identifier = <expr>
+<RO>-> > | < | == | [ = ] (three tokens) | !=
+<label>->label Identifier
+<goto>->warp Identifier
+
+Firsts -- 
+
+<goto> -- warp
+<label> -- label
+<RO> -- > , < , = , [ , !
+<assign> -- assign
+<loop> -- while
+<if> -- if 
+<out> -- output
+<in> -- input
+<stat> -- input , output , if , while , assign , label , warp , begin
+<mStat> -- empty , input , output , if , while , assign , label , warp , begin
+<stats> -- input , output , if , while , assign , label , warp , begin
+<R> -- ( , Identifier , Integer
+<M> -- : , ( , Identifier , Integer
+<A_> -- /
+<A> -- : , ( , Identifier , Integer
+<N> -- : , ( , Identifier , Integer
+<exp> -- : , ( , Identifier , Integer
+<block> -- begin
+<vars> -- whole
+<program> -- whole , program
+
+FOLLOWS -- 
+
+<program> -- $
+<block> -- $
+<vars> -- program , input , output , if , while , assign , label , warp , begin
+<expr> --  ) , ; , ] , > , < , = , [ , !
+<N> --    - , ) , ; , ] , > , < , = , [ , !
+<A> -- + , * , - , ) , ; , ] , > , < , = , [ , !
+<A_> -- + , * , - , ) , ; , ] , > , < , = , [ , !
+<M> -- / , + , * , - , ) , ; , ] , > , < , = , [ , !
+<R> -- / , + , * , - , ) , ; , ] , > , < , = , [ , !
+<stats> -- end
+<mStat> -- end
+<stat> -- input , output , if , while , assign , label , warp , begin , end , ;
+<in> -- ;
+<out> -- ;
+<if> -- ;
+<loop> -- ;
+<assign> - ;
+<RO> -- : , ( , Identifier , Integer
+<label> -- ;
+<goto> -- ;

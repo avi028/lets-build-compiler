@@ -1,0 +1,5 @@
+# p3g1, this should result in an error in all options #
+program
+begin
+input x ;
+end

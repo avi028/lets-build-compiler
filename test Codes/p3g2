@@ -1,0 +1,6 @@
+# p3g2, this should be fine#
+whole _x := 10 ;
+program
+begin
+output _x ;
+end

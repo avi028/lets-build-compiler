@@ -1,0 +1,17 @@
+parser: parser.o scanner.o main.o scanner.h parser.h token.h
+	g++ main.o scanner.o parser.o -o parser
+
+main.o: main.cpp
+	g++ -c main.cpp
+	
+parser.o: parser.cpp
+	g++ -c parser.cpp
+
+scanner.o: scanner.cpp
+	g++ -c scanner.cpp
+
+clean: 
+	rm -f *.o scanner 
+	rm -f *.o parser
+	rm -f *.o main
+	rm -f keyboardinput.txt
